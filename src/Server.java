@@ -14,8 +14,8 @@ public class Server {
     private static Map<String,Protocol> connections;
 
     public static void main(String[] args) throws Exception {
-        SSLServerSocketFactory ssf = Security.getSSLContext().getServerSocketFactory();
-        ServerSocket s = ssf.createServerSocket(Protocol.PORT);
+        //SSLServerSocketFactory ssf = Security.getSSLContext().getServerSocketFactory();
+        ServerSocket s = new ServerSocket(Protocol.PORT);//ssf.createServerSocket(Protocol.PORT);
         connections = new HashMap<>();
         running = true;
 //        new Thread(() -> {
