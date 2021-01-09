@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 
 public class Protocol {
     public static final int PORT = 10010;
-    public static final String HOST = "redmine.technic.zone";
+    public static final String HOST = "10.0.1.137";
     private BufferedInputStream is;
     private BufferedOutputStream os;
     private Socket socket;
