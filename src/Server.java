@@ -103,7 +103,7 @@ public class Server {
                             String roomUUID3 = UUID.randomUUID().toString();
                             rooms.put(roomUUID3,new ChatRoom());
                             inRoom.put(uuid,roomUUID3);
-                            p.write(new Message(MessageType.CREATE_ROOM,null));
+                            p.write(new Message(MessageType.CREATE_ROOM,roomUUID3.getBytes()));
                             break;
                         case POST:
                             ObjectInputStream obj4 = new ObjectInputStream(new ByteArrayInputStream(msg.buffer));

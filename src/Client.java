@@ -7,6 +7,7 @@ public class Client {
     private static boolean running;
     private static boolean connected;
     private static int joined;
+    private static String roomId;
 
     public static void main(String[] args) throws Exception{
         SSLSocketFactory sf = Security.getSSLContext().getSocketFactory();
@@ -44,6 +45,7 @@ public class Client {
             if(choice==0) {
                 System.out.println("Please enter chat room id to join");
                 String id = scn.nextLine();
+                roomId = id;
                 p.write(new Message(MessageType.JOIN_ROOM, id.getBytes()));
             }else{
                 p.write(new Message(MessageType.CREATE_ROOM,null));
@@ -90,6 +92,7 @@ public class Client {
                             }
                             break;
                         case CREATE_ROOM:
+                            roomId = new String(msg.buffer);
                             joined = 1;
                             break;
                         case LEAVE_ROOM:
