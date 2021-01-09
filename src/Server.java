@@ -19,6 +19,9 @@ public class Server {
         SSLServerSocketFactory ssf = Security.getSSLContext().getServerSocketFactory();
         ServerSocket s = ssf.createServerSocket(Protocol.PORT);
         connections = new HashMap<>();
+        clientData = new HashMap<>();
+        rooms = new HashMap<>();
+        inRoom = new HashMap<>();
         running = true;
 //        new Thread(() -> {
 //            Scanner scn = new Scanner(System.in);

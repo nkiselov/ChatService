@@ -13,7 +13,7 @@ public class Client {
         Socket socket = sf.createSocket(Protocol.HOST,Protocol.PORT);
         Protocol p = new Protocol(socket);
         Scanner scn = new Scanner(System.in);
-        System.out.print("Welcome to the chat service");
+        System.out.println("Welcome to the chat service");
         System.out.println("What is your name");
         String name = scn.nextLine();
 
