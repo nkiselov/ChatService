@@ -35,8 +35,8 @@ public class Protocol {
     }
 
     public void write(Message msg) throws IOException{
-        os.write(msg.buffer.length+1);
-        os.write(msg.type.val);
+        os.write(ByteBuffer.allocate(4).putInt(msg.buffer.length+1).array());
+        os.write((byte)msg.type.val);
         os.write(msg.buffer);
         os.flush();
     }

@@ -6,17 +6,24 @@ import java.net.Socket;
 import java.security.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Server {
     private static boolean running;
     private static Map<String,Protocol> connections;
 
-    public static void main(String[] args) throws IOException, GeneralSecurityException {
+    public static void main(String[] args) throws Exception {
         SSLServerSocketFactory ssf = Security.getSSLContext().getServerSocketFactory();
         ServerSocket s = ssf.createServerSocket(Protocol.PORT);
         connections = new HashMap<>();
         running = true;
+//        new Thread(() -> {
+//            Scanner scn = new Scanner(System.in);
+//            scn.nextLine();
+//            Server.running=false;
+//            System.exit(0);
+//        }).start();
         while (running) {
             Socket client = s.accept();
             String uuid = UUID.randomUUID().toString();
@@ -48,7 +55,6 @@ public class Server {
                     System.out.println(msg.type.toString()+": "+new String(msg.buffer));
                 }
             }catch (IOException e){
-                e.printStackTrace();
                 Server.disconnected(uuid);
             }
         }
