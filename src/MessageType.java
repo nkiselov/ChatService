@@ -2,10 +2,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum MessageType {
-    AUDIO(0),
-    TEXT(1),
-    CONNECT(2),
-    GET_ROOMS(3);
+    POST(0),
+    CONNECT(1),
+    JOIN_ROOM(2),
+    LEAVE_ROOM(3),
+    CREATE_ROOM(4);
 
     public int val;
 
